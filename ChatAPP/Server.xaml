@@ -1,0 +1,145 @@
+﻿<Window
+	x:Class="ChatAPP.Server"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:local="clr-namespace:ChatAPP"
+	xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+	mc:Ignorable="d"
+	Title="Server"
+	Height="450"
+	Width="300"
+	WindowStyle="None"
+	FontFamily="Moderna">
+
+	<Grid
+		x:Name="MainGrid">
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="auto" />
+			<RowDefinition
+				Height="395*" />
+		</Grid.RowDefinitions>
+		
+		<!--#region TitleBar -->
+		<StackPanel
+			x:Name="TitleBar"
+			Orientation="Horizontal"
+			HorizontalAlignment="Right"
+			Margin="0,5,5,5"
+			Grid.Column="0"
+			Grid.Row="0">
+			<Button
+				x:Name="MinimizeBttn"
+				Margin="5,0,5,0"
+				Height="32"
+				VerticalAlignment="Top"
+				Click="MinimizeBttn_Click">
+				<materialDesign:PackIcon
+					Kind="WindowMinimize" />
+			</Button>
+			<Button
+				x:Name="MaximizeBttn"
+				Margin="5,0,5,0"
+				Height="32"
+				VerticalAlignment="Top"
+				Click="MaximizeBttn_Click">
+				<materialDesign:PackIcon
+					Kind="WindowMaximize" />
+			</Button>
+			<Button
+				x:Name="CloseBttn"
+				Margin="5,0,5,0"
+				Click="CloseBttn_Click">
+				<materialDesign:PackIcon
+					Kind="WindowClose" />
+			</Button>
+		</StackPanel>
+		<!--#endregion-->
+		
+		<!--#region SideBar -->
+		<Grid
+			Grid.Row="1"
+			Grid.Column="0"
+			Name="SidePanel"
+			Grid.ColumnSpan="1"
+			MinWidth="200">
+			<!--#region ServerTitle -->
+			<DockPanel
+				Background="Cyan"
+				Margin="0">
+				<StackPanel
+					DockPanel.Dock="Top"
+					Orientation="Horizontal"
+					VerticalAlignment="Center"
+					Margin="5">
+					<materialDesign:PackIcon
+						Kind="Server"
+						Foreground="#b76cfd"
+						VerticalAlignment="Center" />
+					<TextBlock
+						Margin="3,10,3,10"
+						Text="Servidor"
+						FontSize="16"
+						Foreground="#b76cfd"
+						FontFamily="Century Gothic"
+						FontWeight="Bold"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center" />
+					<Separator />
+				</StackPanel>
+				<DockPanel
+					LastChildFill="True"
+					Margin="10,0,10,0"
+					VerticalAlignment="Stretch">
+					<TextBlock
+						Text="Nome de Usuário"
+						Foreground="#b76cfd"
+						FontWeight="Bold"
+						DockPanel.Dock="Top"/>
+					<TextBox
+						DockPanel.Dock="Top"
+						x:Name="UserNameInput"
+						Margin="3"
+						BorderBrush="#b76cfd"
+						Foreground="#b76cfd"/>
+					<Button
+						x:Name="NewUserBttn"
+						Click="NewUserBttn_Click"
+						DockPanel.Dock="Top">
+						<StackPanel Orientation="Horizontal">
+							
+							<materialDesign:PackIcon
+								Kind="UserAdd" />
+							<TextBlock
+								Text="Adicionar Usuário" />
+						</StackPanel>
+					</Button>
+					
+					<ScrollViewer
+						HorizontalScrollBarVisibility="Auto"
+						VerticalScrollBarVisibility="Auto"
+						Margin="3"
+						DockPanel.Dock="Bottom"
+						Background="#444444">
+						<ListView
+							x:Name="ServerLog"
+							Margin="3" 
+							Foreground="White"/>
+					</ScrollViewer>
+				</DockPanel>
+
+
+			</DockPanel>
+			<!--#endregion-->
+		</Grid>
+		<!--#endregion-->
+		
+		<!--#region ChatArea -->
+		<Grid
+			x:Name="ChatGrid" Grid.Column="1" Grid.Row="1"/>
+		<!--#endregion-->
+
+	</Grid>
+</Window>
